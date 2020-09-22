@@ -26,6 +26,9 @@ dependencies:
   convex_bottom_bar: ^2.4.1
   flutter_signin_button: ^1.1.0
   pinput: ^0.2.0
+  #  core_library
+  get_it: ^4.0.2
+  get: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

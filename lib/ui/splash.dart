@@ -1,6 +1,7 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:memorylife/my_navigator.dart';
+import 'package:memorylife/navigator/navigator.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,30 +11,27 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 4), () => MyNavigator.goToIntro(context));
+    openLogin();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/splash.png'),
-            fit: BoxFit.fill,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(),
-          ],
-        ),
+        width: double.infinity,
+        child: Image.asset("assets/splash.png",
+            fit: BoxFit.fill, width: double.infinity),
       ),
     );
+  }
+
+  void openLogin() async {
+    //bool isSelectedCountry = prefs.containsKey(AppPreferences.COUNTRY);
+
+    Future.delayed(Duration(seconds: 2), () {
+      CircularProgressIndicator();
+      AppNavigator.navigateBegin();
+    });
   }
 }
