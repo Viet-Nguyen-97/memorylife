@@ -26,6 +26,10 @@ dependencies:
   convex_bottom_bar: ^2.4.1
   flutter_signin_button: ^1.1.0
   pinput: ^0.2.0
+  intl: ^0.16.1
+  image_picker: ^0.6.7+11
+  inview_notifier_list: ^1.0.0
+  emoji_feedback: ^0.1.0
   #  core_library
   get_it: ^4.0.2
   get: ^2.1.1

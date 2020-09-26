@@ -4,16 +4,16 @@ import 'package:memorylife/navigator/navigator.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'dart:async';
 
-class RePinPutTest extends StatefulWidget {
+class UnlockApp extends StatefulWidget {
   final String pinn;
 
-  RePinPutTest({Key key, @required this.pinn}) : super(key: key);
+  UnlockApp({Key key, @required this.pinn}) : super(key: key);
 
   @override
-  _RePinPutTest createState() => new _RePinPutTest();
+  _UnlockApp createState() => new _UnlockApp();
 }
 
-class _RePinPutTest extends State<RePinPutTest>{
+class _UnlockApp extends State<UnlockApp>{
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
 
@@ -36,54 +36,61 @@ class _RePinPutTest extends State<RePinPutTest>{
         body: Builder(
           builder: (context) {
             return Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/background.png'),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-                
                 Positioned(
-                  top: 250.0,
-                  left: 20,
-                  right: 20,
-                  child: Center(
-                    child: Text("Nhập lại mật khẩu", style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w700),
-                    ),
-                  )
-                ),
-
-                Positioned(
-                  top: 280,
-                  left: 0,
-                  right: 0,
-                  child: Center(
+                    top: 50.0,
                     child: Container(
-                      height: 50,
-                      color: Colors.white,
-                      margin: const EdgeInsets.all(20.0),
-                      padding: const EdgeInsets.all(5.0),
-                      child: PinPut(
-                        fieldsCount: 6,
-                        onSubmit: (String pin) => _compare(widget.pinn ,pin, context),
-                        focusNode: _pinPutFocusNode,
-                        controller: _pinPutController,
-                        submittedFieldDecoration: _pinPutDecoration.copyWith(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        selectedFieldDecoration: _pinPutDecoration,
-                        followingFieldDecoration: _pinPutDecoration.copyWith(
-                          borderRadius: BorderRadius.circular(5.0),
-                          border: Border.all(
-                            color: Colors.blue,
-                          ),
+
+                      height: 100,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/lock.png'),
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
-                  )
+                ),
+
+                Positioned(
+                    top: 250.0,
+                    left: 20,
+                    right: 20,
+                    child: Center(
+                      child: Text("Nhập mật khẩu của bạn", style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w700),
+                      ),
+                    )
+                ),
+
+                Positioned(
+                    top: 280,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Container(
+                        height: 50,
+                        color: Colors.white,
+                        margin: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(5.0),
+                        child: PinPut(
+                          fieldsCount: 6,
+                          onSubmit: (String pin) => _compare("111222",pin, context),
+                          focusNode: _pinPutFocusNode,
+                          controller: _pinPutController,
+                          submittedFieldDecoration: _pinPutDecoration.copyWith(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          selectedFieldDecoration: _pinPutDecoration,
+                          followingFieldDecoration: _pinPutDecoration.copyWith(
+                            borderRadius: BorderRadius.circular(5.0),
+                            border: Border.all(
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                 ),
               ],
             );
@@ -107,35 +114,35 @@ class _RePinPutTest extends State<RePinPutTest>{
               Animation secondaryAnimation) {
             return Center(
               child: Container(
-                width: MediaQuery.of(context).size.width - 10,
-                height: MediaQuery.of(context).size.height -  80,
-                padding: EdgeInsets.all(20),
+                  width: MediaQuery.of(context).size.width - 10,
+                  height: MediaQuery.of(context).size.height -  80,
+                  padding: EdgeInsets.all(20),
 
-                alignment: Alignment.center,
+                  alignment: Alignment.center,
 
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/done.png"),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/done.png"),
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        textColor: Colors.white,
+                        color: Colors.blue,
+                        onPressed: () {
+                          AppNavigator.navigateNavigation();
+                        },
+                        child: Text('Xác nhận', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),),
                       ),
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      onPressed: () {
-                        AppNavigator.navigateNavigation();
-                      },
-                      child: Text('Xác nhận', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),),
-                    ),
-                  ],
-                )
+                    ],
+                  )
               ),
             );
 
           });
-  }
+    }
     else{
       return showGeneralDialog(
           context: context,

@@ -42,4 +42,9 @@ class AppNavigator {
     var result = await Get.toNamed(BaseRouter.NAVIGATION);
     return result;
   }
+
+  static navigateCreateDiary() async {
+    var result = await Get.toNamed(BaseRouter.CREATE_DIARY);
+    return result;
+  }
 }

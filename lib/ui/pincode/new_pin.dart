@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:memorylife/navigator/navigator.dart';
 import 'package:memorylife/ui/pincode/re_pin.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
@@ -79,25 +80,6 @@ class PinPutTestState extends State<PinPutTest> {
                     ),
                   )
                 ),
-
-                Positioned(
-                  top: 400,
-                  left: 20,
-                  right: 20,
-                  child: Center(
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      onPressed: () {
-
-                      },
-                      child: Text('Xác nhận', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),),
-                    ),
-                  )
-                )
               ],
             );
           },

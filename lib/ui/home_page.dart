@@ -1,26 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:memorylife/navigator/navigator.dart';
 import 'package:memorylife/ui/menu/tai_khoan.dart';
 import 'package:memorylife/ui/menu/nhat_ki.dart';
 import 'package:memorylife/ui/menu/lich.dart';
 import 'package:memorylife/ui/menu/kho_anh.dart';
 import 'package:memorylife/ui/menu/ban_do.dart';
-import 'package:memorylife/ui/man_cho/man_cho.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+import 'drawer/app_drawer.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -36,51 +24,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.favorite),
-        title: Text(widget.title),
         actions: <IconButton>[
           new IconButton(
             icon: searchIcon,
+            onPressed: (){},
+          ),
+
+          new IconButton(
+            icon: Icon(Icons.notifications),
             onPressed: (){},
           )
         ],
       ),
       body: _pageOptions[selectedPage],
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                ),
-                child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      new Image.asset('assets/diary_icon.png', height: 35, width: 35,),
-                      new Text('  MEMORY LIFE', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20, color: Colors.cyanAccent),
-                      ),
-                    ]
-                )
-            ),
-
-            ListTile(
-              title: Text('Profile'),
-              onTap: () {
-                print("pro");
-              },
-            ),
-            ListTile(
-              title: Text('Cài đặt'),
-              onTap: () {
-
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: AppDrawer(),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          AppNavigator.navigateCreateDiary();
+        },
         tooltip: 'Thêm nhật kí',
         child: Icon(Icons.add),
       ),
@@ -90,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         activeColor: Colors.blue,
         style: TabStyle.react,
         items: [
-          TabItem(icon: Image.asset("assets/diary.png", color: selectedPage == 0
+          TabItem(icon: Image.asset("assets/note.png", color: selectedPage == 0
               ? Colors.blue
               : Colors.grey,
           ),

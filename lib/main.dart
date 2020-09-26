@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:memorylife/ui/home_page.dart';
+import 'package:memorylife/ui/unlock/unlock.dart';
 
 import 'app_config.dart';
 import 'router.dart' as Router;
 import 'ui/splash.dart';
 
-//var routes = <String, WidgetBuilder>{
-//  "/home": (BuildContext context) => MyApp(),
-//  "/intro1": (BuildContext context) => BeginScreen(),
-//  "/intro2": (BuildContext context) => TwoScreen(),
-//  "/intro3": (BuildContext context) => ThreeScreen(),
-//};
-
 void main() {
-//  MyApp.initSystemDefault();
-
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarIconBrightness: Brightness.light,
       systemNavigationBarColor: Colors.white));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     AppConfig(
-      appName: "ANGEL",
+      appName: "Memory Life",
       debugTag: false,
       flavorName: "prod",
       initialRoute: Router.BaseRouter.SPLASH,
@@ -45,7 +38,7 @@ class App extends StatelessWidget {
       ),
       onGenerateRoute: Router.BaseRouter.generateRoute,
       routes: Router.BaseRouter.routes(context),
-      home: SplashScreen(),
+      home: MyHomePage(title: "Memory life",),
     );
   }
 
