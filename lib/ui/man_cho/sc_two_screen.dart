@@ -25,6 +25,20 @@ class _TwoScreenState extends State<TwoScreen> {
                   alignment: Alignment.center,
                   children: <Widget>[
                     Positioned(
+                      top: 30,
+                      left: 20,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).canPop();
+                        }, // needed
+                        child: Image.asset(
+                          "assets/undo.png",
+                          width: 15,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Positioned(
                         top: 60.0,
                         child: Center(
                           child: Text(
@@ -81,6 +95,9 @@ class _TwoScreenState extends State<TwoScreen> {
                               textColor: Colors.white,
                               color: Colors.blue,
                               onPressed: () {
+//                                Route route = MaterialPageRoute(
+//                                    builder: (context) => ThreeScreen());
+//                                Navigator.push(context, route);
                                 AppNavigator.navigateThree();
                               },
                               child: Row(

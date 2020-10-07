@@ -26,6 +26,21 @@ class _ThreeScreenState extends State<ThreeScreen> {
                   alignment: Alignment.center,
                   children: <Widget>[
                     Positioned(
+                      top: 30,
+                      left: 20,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).maybePop();
+                        }, // needed
+                        child: Image.asset(
+                          "assets/undo.png",
+                          color: Colors.blue,
+                          width: 15,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Positioned(
                       top: 60.0,
                       child: Text(
                         "Memory Life",
@@ -81,6 +96,10 @@ class _ThreeScreenState extends State<ThreeScreen> {
                               textColor: Colors.white,
                               color: Colors.blue,
                               onPressed: () {
+//                                Navigator.push(
+//                                    context,
+//                                    MaterialPageRoute(
+//                                        builder: (context) => PinPutTest()));
                                 AppNavigator.navigateOtp();
                               },
                               child: Row(
@@ -110,6 +129,12 @@ class _ThreeScreenState extends State<ThreeScreen> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   AppNavigator.navigateNavigation();
+//                                  Navigator.push(
+//                                      context,
+//                                      MaterialPageRoute(
+//                                          builder: (context) => MyHomePage(
+//                                                title: "Memory Life",
+//                                              )));
                                 })),
                     )
                   ],
